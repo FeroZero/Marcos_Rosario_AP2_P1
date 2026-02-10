@@ -1,27 +1,28 @@
 package edu.ucne.marcos_rosario_ap2_p1.di
 
 import android.content.Context
-import androidx.room.Room.databaseBuilder
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import edu.ucne.marcos_rosario_ap2_p1.data.local.database.Database
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
-abstract class AppModule {
+@InstallIn(SingletonComponent::class)
+object AppModule {
 
-    companion object {
-        @Provides
-        @Singleton
-        fun provideEstudianteDb(@ApplicationContext appContext: Context) =
-            databaseBuilder(
-                appContext,
-                klass = ,
-                name =
-            ).fallbackToDestructiveMigration()
-                .build()
-    }
+    @Provides
+    @Singleton
+    fun provideEstudianteDb(
+        @ApplicationContext appContext: Context
+    ): Database = Room.databaseBuilder(
+        appContext,
+        Database::class.java,
+        "Borrame.db"
+    )
+        .fallbackToDestructiveMigration()
+        .build()
 }
