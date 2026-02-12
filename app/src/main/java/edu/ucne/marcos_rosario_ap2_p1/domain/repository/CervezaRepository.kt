@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CervezaRepository {
 
-    fun observeAll(): Flow<List<Cerveza?>>
+    fun observeAll(): Flow<List<Cerveza>>
 
     suspend fun getById(id: Int) : Cerveza?
 
