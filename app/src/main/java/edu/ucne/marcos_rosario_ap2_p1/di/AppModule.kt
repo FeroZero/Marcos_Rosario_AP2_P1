@@ -21,7 +21,7 @@ object AppModule {
     ): Database = Room.databaseBuilder(
         appContext,
         Database::class.java,
-        "Borrame.db"
+        "Cerveza.db"
     )
         .fallbackToDestructiveMigration()
         .build()
